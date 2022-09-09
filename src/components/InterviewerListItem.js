@@ -4,7 +4,7 @@ import classNames from "classnames";
 import "components/InterviewerListItem.scss";
 
 export default function InterviewerListItem(props) {
-  let buttonClass = classNames("interviewers__item", {
+  let interviewerListItemClass = classNames("interviewers__item", {
     "interviewers__item--selected": props.selected === true
   });
 
@@ -15,7 +15,7 @@ export default function InterviewerListItem(props) {
   }
 
   return (
-    <li className={buttonClass} onClick={() => props.setInterviewer(props.id)}>
+    <li className={interviewerListItemClass} onClick={props.setInterviewer}>
       <img
         className="interviewers__item-image"
         src={props.avatar}
