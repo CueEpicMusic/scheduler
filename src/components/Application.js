@@ -17,8 +17,6 @@ export default function Application() {
 
   const dailyAppointments = getAppointmentsForDay(state, state.day);
 
-  console.log("daily",dailyAppointments)
-
   const schedule = dailyAppointments.map((appointment) => {
     const interview = getInterview(state, appointment.interview);
 
@@ -31,7 +29,7 @@ export default function Application() {
       />
     );
   });
-
+  
   const setDay = (day) => setState({ ...state, day });
   useEffect(() => {
     const daysURL = `http://localhost:8001/api/days`;
@@ -46,6 +44,7 @@ export default function Application() {
         ...prev,
         days: all[0].data,
         appointments: all[1].data,
+        interviewers: all[2].data
       }));
     });
   }, []);
@@ -69,9 +68,7 @@ export default function Application() {
         />
       </section>
       <section className="schedule">
-        {dailyAppointments.map((appointment) => {
-          return <Appointment key={appointment.id} {...appointment} />;
-        })}
+        {schedule}
       </section>
     </main>
   );
