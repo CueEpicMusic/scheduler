@@ -29,7 +29,7 @@ export default function Application() {
       />
     );
   });
-  
+console.log(dailyAppointments)
   const setDay = (day) => setState({ ...state, day });
   useEffect(() => {
     const daysURL = `http://localhost:8001/api/days`;

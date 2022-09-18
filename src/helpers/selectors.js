@@ -10,21 +10,22 @@ export function getAppointmentsForDay(state, day) {
 
 export function getInterview(state, interview) {
   if (!interview) {
-    return null
+    return null;
   }
-  const interviewerId = interview.interviewer
+  const interviewerId = interview.interviewer;
   return {
     student: interview.student,
-    interviewer: state.interviewers[interviewerId]
-  }
+    interviewer: state.interviewers[interviewerId],
+  };
 }
 
 export function getInterviewersForDay(state, day) {
   const filteredDay = state.days.find((item) => item.name === day);
+  console.log(filteredDay)
   if (!filteredDay) {
     return [];
   }
-  return filteredDay.Interviewers.map(
-    (appointmentId) => state.Interviewers[appointmentId]
+  return filteredDay.interviewers.map(
+    (interviewersId) => state.interviewers[interviewersId]
   );
 }
