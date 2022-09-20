@@ -3,7 +3,11 @@ import axios from "axios";
 
 import DayList from "components/DayList";
 import Appointment from "./Appointment";
-import { getAppointmentsForDay, getInterview } from "helpers/selectors";
+import {
+  getAppointmentsForDay,
+  getInterview,
+  getInterviewersForDay,
+} from "helpers/selectors";
 
 import "components/Application.scss";
 
@@ -19,6 +23,7 @@ export default function Application() {
 
   const schedule = dailyAppointments.map((appointment) => {
     const interview = getInterview(state, appointment.interview);
+    const interviewers = getInterviewersForDay(state, state.day);
 
     return (
       <Appointment
@@ -26,10 +31,12 @@ export default function Application() {
         id={appointment.id}
         time={appointment.time}
         interview={interview}
+        interviewers={interviewers}
+        bookInterview={bookInterview}
       />
     );
   });
-console.log(dailyAppointments)
+
   const setDay = (day) => setState({ ...state, day });
   useEffect(() => {
     const daysURL = `http://localhost:8001/api/days`;
@@ -44,10 +51,29 @@ console.log(dailyAppointments)
         ...prev,
         days: all[0].data,
         appointments: all[1].data,
-        interviewers: all[2].data
+        interviewers: all[2].data,
       }));
     });
   }, []);
+
+  function bookInterview(id, interview) {
+    const appointment = {
+      ...state.appointments[id],
+      interview: { ...interview },
+    };
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment,
+    };
+    return axios
+      .put(`http://localhost:8001/api/appointments/${id}`, { interview })
+      .then(() => {
+        setState({
+          ...state,
+          appointments,
+        });
+      });
+  }
 
   return (
     <main className="layout">
@@ -67,9 +93,7 @@ console.log(dailyAppointments)
           alt="Lighthouse Labs"
         />
       </section>
-      <section className="schedule">
-        {schedule}
-      </section>
+      <section className="schedule">{schedule}</section>
     </main>
   );
 }
