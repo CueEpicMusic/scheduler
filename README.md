@@ -10,7 +10,7 @@ The interview scheduler is a single page application that allows students to boo
 - Choose from weekdays (Monday to Friday) to book an interview, available spots are shown for each day.
 
 - User can book interviews by clicking on the add icon, typing their name and selecting an interviewer from the list.
-
+![Edit](docs/booking-interview.mp4)
 - User can edit an existing interview by hovering on an appointment and clicking the edit icon.
 
 - User can cancel an existing interview by hovering on an appointment and clicking the delete icon, the user will have to confirm before permanently deleting the interview.
