@@ -2,7 +2,7 @@
 
 ## Description
 
-The interview scheduler is a single page application that allows students to book interviews with mentors.
+The interview scheduler is a single page application that allows students to book appointments with mentors.
 
 ## Features
 
