@@ -17,6 +17,8 @@ https://user-images.githubusercontent.com/92469359/193927613-435198bd-af1e-4d39-
 
 - User can edit an existing interview by hovering on an appointment and clicking the edit icon.
 
+https://user-images.githubusercontent.com/92469359/193930078-58aaa962-1d33-4d68-bed4-df0c3dc91385.mp4
+
 - User can cancel an existing interview by hovering on an appointment and clicking the delete icon, the user will have to confirm before permanently deleting the interview.
 
 ## Setup
