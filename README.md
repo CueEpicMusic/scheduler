@@ -6,6 +6,7 @@ The interview scheduler is a single page application that allows students to boo
 
 ## Features
 
+![Main page](docs/main-page.png)
 - Choose from weekdays (Monday to Friday) to book an interview, available spots are shown for each day.
 
 - User can book interviews by clicking on the add icon, typing their name and selecting an interviewer from the list.
